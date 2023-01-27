@@ -79,57 +79,76 @@
 
 // console.log(array.multBy(3))
 
-function createCalFunction(n) {
-    return function() {
-        console.log(1000 * n)
-    }
+// function createCalFunction(n) {
+//     return function() {
+//         console.log(1000 * n)
+//     }
+// }
+
+// const  calc = createCalFunction(42)
+// // console.log(calc)
+// calc()
+
+// function createIncrementor(m) {
+//     return function(num) {
+//         return m + num
+//     } 
+// }
+
+// const addOne = createIncrementor(1)
+// const addTen = createIncrementor(10)
+
+// console.log(addOne(10))
+// console.log(addOne(45))
+
+// console.log(addTen(10))
+// console.log(addTen(45))
+
+// function urlGenerator(domain) {
+//     return function(url) {
+//         return `https://${url}.${domain}`
+//     }
+// }
+
+// const comUrl = urlGenerator('com')
+// const ruUrl = urlGenerator('ru')
+
+// console.log(comUrl('google'))
+// console.log(ruUrl('twitch'))
+
+
+
+// function bind(context, fn) {
+//     return function(...args) {
+//         fn.apply(context, args)
+//     }
+// }
+
+// function logPerson() {
+//     console.log(`Person: ${this.name}, ${this.age}, ${this.job}`)
+// }
+
+// const person1 = {name: 'Даниил', age: 20, job: 'Безработный'}
+// const person2 = {name: 'Игорь', age: 24, job: 'Продавец'}
+
+// bind(person1, logPerson)()
+// bind(person2, logPerson)()
+
+console.log('Start')
+console.log('Start 2')
+
+function timeout2sec() {
+    console.log('timeout2sec')
 }
 
-const  calc = createCalFunction(42)
-// console.log(calc)
-calc()
+setTimeout(function() {
+    console.log('Inside timeout, after 0 seconds')
+}, 0)
 
-function createIncrementor(m) {
-    return function(num) {
-        return m + num
-    } 
-}
+window.setTimeout(function() {
+    console.log('Inside timeout, after 5 seconds')
+}, 5000)
 
-const addOne = createIncrementor(1)
-const addTen = createIncrementor(10)
+setTimeout(timeout2sec, 2000)
 
-console.log(addOne(10))
-console.log(addOne(45))
-
-console.log(addTen(10))
-console.log(addTen(45))
-
-function urlGenerator(domain) {
-    return function(url) {
-        return `https://${url}.${domain}`
-    }
-}
-
-const comUrl = urlGenerator('com')
-const ruUrl = urlGenerator('ru')
-
-console.log(comUrl('google'))
-console.log(ruUrl('twitch'))
-
-
-
-function bind(context, fn) {
-    return function(...args) {
-        fn.apply(context, args)
-    }
-}
-
-function logPerson() {
-    console.log(`Person: ${this.name}, ${this.age}, ${this.job}`)
-}
-
-const person1 = {name: 'Даниил', age: 20, job: 'Безработный'}
-const person2 = {name: 'Игорь', age: 24, job: 'Продавец'}
-
-bind(person1, logPerson)()
-bind(person2, logPerson)()
+console.log('End')
