@@ -153,7 +153,7 @@
 
 // console.log('End')
 
-console.log('Request data...')
+// console.log('Request data...')
 
 // setTimeout(() => {
 //   console.log('Preparing data...')
@@ -170,58 +170,94 @@ console.log('Request data...')
 //   }, 2000)
 // }, 2000)
 
-const p = new Promise(function(resolve, reject) {  // 2 аргумента в функции 
-    setTimeout(() => {
-        console.log('Preparing data...')
-        const backendData = {
-            server: 'aws',
-            port: 2000,
-            status: 'working'
-          }
-        resolve(backendData)
-    }, 2000)
-})
+// const p = new Promise(function(resolve, reject) {  // 2 аргумента в функции 
+//     setTimeout(() => {
+//         console.log('Preparing data...')
+//         const backendData = {
+//             server: 'aws',
+//             port: 2000,
+//             status: 'working'
+//           }
+//         resolve(backendData)
+//     }, 2000)
+// })
 
-p.then(data => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            data.modified = true
-            resolve(data)  // Если reject - выведет ошибку
-            // console.log('Data recieved', backendData)
-          }, 2000)
-    })
+// p.then(data => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             data.modified = true
+//             resolve(data)  // Если reject - выведет ошибку
+//             // console.log('Data recieved', backendData)
+//           }, 2000)
+//     })
 
-    // p2.then(clientData => {
-    //     console.log('Data recieved', clientData)
-    // })
-})
-.then(clientData => {
-    console.log('Data recieved', clientData)
-    clientData.fromPromise = true
-    return clientData 
-}).then(data => {
-    console.log('Modified', data)
-})
-.catch(err => console.error('Error: ', err)) // Выведение ошибки в случае с reject
-.finally(() => console.log('Finally'))
+//     // p2.then(clientData => {
+//     //     console.log('Data recieved', clientData)
+//     // })
+// })
+// .then(clientData => {
+//     console.log('Data recieved', clientData)
+//     clientData.fromPromise = true
+//     return clientData 
+// }).then(data => {
+//     console.log('Modified', data)
+// })
+// .catch(err => console.error('Error: ', err)) // Выведение ошибки в случае с reject
+// .finally(() => console.log('Finally'))
 
-/////
+// /////
 
-const sleep = ms => {
-   return new Promise(resolve => {
-    setTimeout(() => resolve(), ms)
-   })
+// const sleep = ms => {
+//    return new Promise(resolve => {
+//     setTimeout(() => resolve(), ms)
+//    })
+// }
+
+// // sleep(2000).then(() => console.log('After 2 sec'))
+// // sleep(3000).then(() => console.log('After 3 sec'))
+
+// Promise.all([sleep(2000), sleep(5000)])
+// .then(() => {
+//     console.log('All promises')
+// })
+
+// Promise.race([sleep(2000), sleep(5000)])
+// .then(() => {
+//     console.log('Race promises')
+// })
+
+const person = Object.create(
+    {
+        calculateAge() {
+            console.log('Age:', new Date().getFullYear() - this.birthYear)
+        }
+}, {
+    name: {
+        value: 'Eagle',
+        enumerable: true, // Делает видным для цикла
+        writable: true, // Позволяет изменять значение
+        configurable: true // Позволяет удалять ключ из объекта
+    },
+    birthYear: {
+        value: 2002,
+        enumerable: true
+    },
+    age: {
+        get() {
+            return new Date().getFullYear() - this.birthYear
+        },
+        set(value) {
+            document.body.style.background = 'blue'
+            console.log('Set age', value)
+        }
+    }
+}) 
+
+person.name = 'Daniil'
+person.birthYear = 2000
+
+for(let key in person) {
+    if (person.hasOwnProperty(key)){
+        console.log('Key', key, person[key])
+    }
 }
-
-// sleep(2000).then(() => console.log('After 2 sec'))
-// sleep(3000).then(() => console.log('After 3 sec'))
-
-Promise.all([sleep(2000), sleep(5000)])
-.then(() => {
-    console.log('All promises')
-})
-
-Promise.race([sleep(2000), sleep(5000)])
-.then(() => {
-    console.log('Race promises')
-})
