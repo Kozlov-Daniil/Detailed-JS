@@ -543,45 +543,129 @@
 // ])
 
 
-function* strGenerator() {
-    yield 'H'
-    yield 'e'
-    yield 'l'
-    yield 'l'
-    yield 'o'
-}
+// function* strGenerator() {
+//     yield 'H'
+//     yield 'e'
+//     yield 'l'
+//     yield 'l'
+//     yield 'o'
+// }
 
-const str = strGenerator()
+// const str = strGenerator()
 
-function* numberGen(n = 10) {
-    for(let i = 0; i < n; i++) {
-        yield i
+// function* numberGen(n = 10) {
+//     for(let i = 0; i < n; i++) {
+//         yield i
+//     }
+// }
+
+// const num = numberGen(7)
+
+// const iterator = {
+//     [Symbol.iterator](w = 10) {
+//         let q = 0
+//         return {
+//             next() {
+//                 if (q < w) {
+//                     return {value: ++q, done: false}
+//                 }
+//                 return {value: undefined, done: true}
+//             }
+//         }
+//     }
+// }
+
+// function* iter(x = 10) {
+//     for (let c = 0; c < x; c++) {
+//         yield c
+//     }
+// }
+
+
+// for(let z of iter(5)) {
+//     console.log(z)
+// }
+
+
+const people = [
+    {name: 'Eagle', age: 20, budget: 20000},
+    {name: 'Mihail', age: 14, budget: 40000},
+    {name: 'Danya', age: 22, budget: 50000},
+    {name: 'Lisa', age: 16, budget: 30000},
+    {name: 'Sofia', age: 24, budget: 60000}
+]
+
+// for (let i = 0; i < people.length; i++) {
+//     console.log(people[i])
+// }
+
+// for (let person of people) {
+//     console.log(person)
+// }
+
+// ForEach
+// people.forEach(function (person, index, pArr) {
+//     console.log(person)
+// })
+
+people.forEach(person => console.log(person))
+
+//Map
+const newPeople = people.map(person => {
+    return `${person.name} (${person.age})`
+})
+console.log(newPeople)
+
+//Filter
+const adults = []
+for (let i = 0; i < people.length; i++) {
+    if (people[i].age >= 18) {
+        adults.push(people[i])
     }
 }
+console.log(adults)
 
-const num = numberGen(7)
-
-const iterator = {
-    [Symbol.iterator](w = 10) {
-        let q = 0
-        return {
-            next() {
-                if (q < w) {
-                    return {value: ++q, done: false}
-                }
-                return {value: undefined, done: true}
-            }
-        }
+const adults1 = people.filter(person => {
+    if (person.age >= 18) {
+        return true
     }
-}
+})
+console.log(adults1)
 
-function* iter(x = 10) {
-    for (let c = 0; c < x; c++) {
-        yield c
+const adults2 = people.filter(person => person.age >= 18)
+console.log(adults2)
+
+//Reduce
+let amount = 0
+for (let i=0; i<people.length; i++){
+    amount += people[i].budget
+}
+console.log(amount)
+
+const amount1 = people.reduce((total, person) => {
+    return total + person.budget
+}, 0)
+console.log(amount1)
+
+const amount2 = people.reduce((total, person) => total + person.budget, 0)
+console.log(amount2)
+
+//Find
+const eagle = people.find(person => person.name === 'Eagle')
+console.log(eagle)
+
+//FindIndex
+const eagleIndex = people.findIndex(person => person.name === 'Eagle')
+console.log(eagleIndex)
+
+///////
+const newPeoples = people
+.filter(person => person.budget > 30000)
+.map(person => {
+    return {
+        info: `${person.name} (${person.age})`,
+        budget: person.budget
     }
-}
+})
 
-
-for(let z of iter(5)) {
-    console.log(z)
-}
+console.log(newPeoples)
