@@ -587,85 +587,254 @@
 // }
 
 
-const people = [
-    {name: 'Eagle', age: 20, budget: 20000},
-    {name: 'Mihail', age: 14, budget: 40000},
-    {name: 'Danya', age: 22, budget: 50000},
-    {name: 'Lisa', age: 16, budget: 30000},
-    {name: 'Sofia', age: 24, budget: 60000}
-]
+// const people = [
+//     {name: 'Eagle', age: 20, budget: 20000},
+//     {name: 'Mihail', age: 14, budget: 40000},
+//     {name: 'Danya', age: 22, budget: 50000},
+//     {name: 'Lisa', age: 16, budget: 30000},
+//     {name: 'Sofia', age: 24, budget: 60000}
+// ]
 
+// // for (let i = 0; i < people.length; i++) {
+// //     console.log(people[i])
+// // }
+
+// // for (let person of people) {
+// //     console.log(person)
+// // }
+
+// // ForEach
+// // people.forEach(function (person, index, pArr) {
+// //     console.log(person)
+// // })
+
+// people.forEach(person => console.log(person))
+
+// //Map
+// const newPeople = people.map(person => {
+//     return `${person.name} (${person.age})`
+// })
+// console.log(newPeople)
+
+// //Filter
+// const adults = []
 // for (let i = 0; i < people.length; i++) {
-//     console.log(people[i])
+//     if (people[i].age >= 18) {
+//         adults.push(people[i])
+//     }
 // }
+// console.log(adults)
 
-// for (let person of people) {
-//     console.log(person)
+// const adults1 = people.filter(person => {
+//     if (person.age >= 18) {
+//         return true
+//     }
+// })
+// console.log(adults1)
+
+// const adults2 = people.filter(person => person.age >= 18)
+// console.log(adults2)
+
+// //Reduce
+// let amount = 0
+// for (let i=0; i<people.length; i++){
+//     amount += people[i].budget
 // }
+// console.log(amount)
 
-// ForEach
-// people.forEach(function (person, index, pArr) {
-//     console.log(person)
+// const amount1 = people.reduce((total, person) => {
+//     return total + person.budget
+// }, 0)
+// console.log(amount1)
+
+// const amount2 = people.reduce((total, person) => total + person.budget, 0)
+// console.log(amount2)
+
+// //Find
+// const eagle = people.find(person => person.name === 'Eagle')
+// console.log(eagle)
+
+// //FindIndex
+// const eagleIndex = people.findIndex(person => person.name === 'Eagle')
+// console.log(eagleIndex)
+
+// ///////
+// const newPeoples = people
+// .filter(person => person.budget > 30000)
+// .map(person => {
+//     return {
+//         info: `${person.name} (${person.age})`,
+//         budget: person.budget
+//     }
 // })
 
-people.forEach(person => console.log(person))
+// console.log(newPeoples)
 
-//Map
-const newPeople = people.map(person => {
-    return `${person.name} (${person.age})`
-})
-console.log(newPeople)
+/////////////Map
 
-//Filter
-const adults = []
-for (let i = 0; i < people.length; i++) {
-    if (people[i].age >= 18) {
-        adults.push(people[i])
-    }
+const obj = {
+    name: 'Eagle',
+    age: 20,
+    job: 'Frontend'
 }
-console.log(adults)
 
-const adults1 = people.filter(person => {
-    if (person.age >= 18) {
-        return true
-    }
-})
-console.log(adults1)
+const entries = [
+    ['name', 'Eagle'],
+    ['age', 20],
+    ['job', 'Frontend']
+]
 
-const adults2 = people.filter(person => person.age >= 18)
-console.log(adults2)
+console.log(Object.entries(obj))
+console.log(Object.fromEntries(entries))
 
-//Reduce
-let amount = 0
-for (let i=0; i<people.length; i++){
-    amount += people[i].budget
+const map = new Map(entries)
+console.log(map.get('job'))
+console.log(obj.job)
+map
+.set('newField', 42)
+.set(obj, 'Value of object')
+.set(NaN, 'NaN ??')
+console.log(map)
+console.log(map.get(obj))
+console.log(map.get(NaN))
+map.delete('job')
+console.log(map.has('job'))
+console.log(map.size)
+// map.clear()
+// console.log(map.size)
+
+///////////////
+for (let entry of map.entries()) {
+    console.log(entry)
 }
-console.log(amount)
 
-const amount1 = people.reduce((total, person) => {
-    return total + person.budget
-}, 0)
-console.log(amount1)
+for (let [key, value] of map.entries()) {
+    console.log(key, value)
+}
 
-const amount2 = people.reduce((total, person) => total + person.budget, 0)
-console.log(amount2)
+for (let [key, value] of map) {
+    console.log(key, value)
+}
 
-//Find
-const eagle = people.find(person => person.name === 'Eagle')
-console.log(eagle)
 
-//FindIndex
-const eagleIndex = people.findIndex(person => person.name === 'Eagle')
-console.log(eagleIndex)
+for (let val of map.values()) {
+    console.log(val)
+}
 
-///////
-const newPeoples = people
-.filter(person => person.budget > 30000)
-.map(person => {
-    return {
-        info: `${person.name} (${person.age})`,
-        budget: person.budget
-    }
+for (let key of map.keys()) {
+    console.log(key)
+}
+
+map.forEach((val, key, m) => {
+    console.log(val, key)
 })
 
-console.log(newPeoples)
+///////////////////
+const array = [...map]
+console.log(array)
+
+const array1 = Array.from(map)
+console.log(array1)
+
+const mapObj = Object.fromEntries(map.entries())
+console.log(mapObj)
+
+/////////////
+const users = [
+    {name: 'Daniil'},
+    {name: 'Misha'},
+    {name: 'Alex'}
+]
+
+const visits = new Map()
+visits
+.set(users[0], new Date())
+.set(users[1], new Date(new Date().getTime() +1000 * 60))
+.set(users[2], new Date(new Date().getTime() +5000 * 60))
+
+function lastVisit(user){
+    return visits.get(user)
+}
+console.log(lastVisit(users[1]))
+
+////////Set
+const set = new Set([1, 2, 3, 3, 3, 4, 5, 5, 6])
+console.log(set)
+set.add(10).add(20).add(30).add(20)
+console.log(set)
+console.log(set.has(30))
+console.log(set.size)
+console.log(set.delete(1))
+console.log(set.size)
+// console.log(set.clear())
+// console.log(set.size)
+
+console.log(set.values())
+console.log(set.keys())
+console.log(set.entries())
+
+for (let k of set) {
+    console.log(k)
+}
+
+
+function uniqValues(array) {
+    return [...new Set(array)]
+}
+console.log(uniqValues([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
+
+function uniqValues1(array) {
+    return Array.from(new Set(array))
+}
+console.log(uniqValues1([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
+
+
+////////////WeakMap
+let ob = {name: 'weakmap'}
+// const a  = [ob]
+// ob = null
+// console.log(ob)
+// console.log(a[0])
+
+const q = new WeakMap([
+    [ob, 'ob data']
+])
+// get set delete has
+ob = null
+console.log(q.has(ob))
+console.log(q.get(ob))
+console.log(q)
+
+/////////
+const cache = new WeakMap()
+function cacheUser(us) {
+    if (!cache.has(us)) {
+        cache.set(us, Date.now())
+    }
+    return cache.get(us)
+}
+let lena = {name: 'Elena'}
+let lesha = {name: 'Lesha'}
+cacheUser(lena)
+cacheUser(lesha)
+
+lena = null
+
+console.log(cache.has(lena))
+console.log(cache.has(lesha))
+
+
+////////////WeakSet
+const users1 = [
+    {name: 'Daniil'},
+    {name: 'Misha'},
+    {name: 'Alex'}
+]
+
+const visit = new WeakSet()
+visit.add(users1[0]).add(users1[1])
+
+users1.splice(1, 1) //Удаление второго пользователя из users1
+
+console.log(visit.has(users1[0]))
+console.log(visit.has(users1[1]))
