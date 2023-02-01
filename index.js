@@ -672,169 +672,251 @@
 
 /////////////Map
 
-const obj = {
-    name: 'Eagle',
-    age: 20,
-    job: 'Frontend'
-}
+// const obj = {
+//     name: 'Eagle',
+//     age: 20,
+//     job: 'Frontend'
+// }
 
-const entries = [
-    ['name', 'Eagle'],
-    ['age', 20],
-    ['job', 'Frontend']
-]
+// const entries = [
+//     ['name', 'Eagle'],
+//     ['age', 20],
+//     ['job', 'Frontend']
+// ]
 
-console.log(Object.entries(obj))
-console.log(Object.fromEntries(entries))
+// console.log(Object.entries(obj))
+// console.log(Object.fromEntries(entries))
 
-const map = new Map(entries)
-console.log(map.get('job'))
-console.log(obj.job)
-map
-.set('newField', 42)
-.set(obj, 'Value of object')
-.set(NaN, 'NaN ??')
-console.log(map)
-console.log(map.get(obj))
-console.log(map.get(NaN))
-map.delete('job')
-console.log(map.has('job'))
-console.log(map.size)
-// map.clear()
+// const map = new Map(entries)
+// console.log(map.get('job'))
+// console.log(obj.job)
+// map
+// .set('newField', 42)
+// .set(obj, 'Value of object')
+// .set(NaN, 'NaN ??')
+// console.log(map)
+// console.log(map.get(obj))
+// console.log(map.get(NaN))
+// map.delete('job')
+// console.log(map.has('job'))
 // console.log(map.size)
+// // map.clear()
+// // console.log(map.size)
 
-///////////////
-for (let entry of map.entries()) {
-    console.log(entry)
-}
+// ///////////////
+// for (let entry of map.entries()) {
+//     console.log(entry)
+// }
 
-for (let [key, value] of map.entries()) {
-    console.log(key, value)
-}
+// for (let [key, value] of map.entries()) {
+//     console.log(key, value)
+// }
 
-for (let [key, value] of map) {
-    console.log(key, value)
-}
+// for (let [key, value] of map) {
+//     console.log(key, value)
+// }
 
 
-for (let val of map.values()) {
-    console.log(val)
-}
+// for (let val of map.values()) {
+//     console.log(val)
+// }
 
-for (let key of map.keys()) {
-    console.log(key)
-}
+// for (let key of map.keys()) {
+//     console.log(key)
+// }
 
-map.forEach((val, key, m) => {
-    console.log(val, key)
-})
+// map.forEach((val, key, m) => {
+//     console.log(val, key)
+// })
 
-///////////////////
-const array = [...map]
-console.log(array)
+// ///////////////////
+// const array = [...map]
+// console.log(array)
 
-const array1 = Array.from(map)
-console.log(array1)
+// const array1 = Array.from(map)
+// console.log(array1)
 
-const mapObj = Object.fromEntries(map.entries())
-console.log(mapObj)
+// const mapObj = Object.fromEntries(map.entries())
+// console.log(mapObj)
 
-/////////////
-const users = [
-    {name: 'Daniil'},
-    {name: 'Misha'},
-    {name: 'Alex'}
-]
+// /////////////
+// const users = [
+//     {name: 'Daniil'},
+//     {name: 'Misha'},
+//     {name: 'Alex'}
+// ]
 
-const visits = new Map()
-visits
-.set(users[0], new Date())
-.set(users[1], new Date(new Date().getTime() +1000 * 60))
-.set(users[2], new Date(new Date().getTime() +5000 * 60))
+// const visits = new Map()
+// visits
+// .set(users[0], new Date())
+// .set(users[1], new Date(new Date().getTime() +1000 * 60))
+// .set(users[2], new Date(new Date().getTime() +5000 * 60))
 
-function lastVisit(user){
-    return visits.get(user)
-}
-console.log(lastVisit(users[1]))
+// function lastVisit(user){
+//     return visits.get(user)
+// }
+// console.log(lastVisit(users[1]))
 
-////////Set
-const set = new Set([1, 2, 3, 3, 3, 4, 5, 5, 6])
-console.log(set)
-set.add(10).add(20).add(30).add(20)
-console.log(set)
-console.log(set.has(30))
-console.log(set.size)
-console.log(set.delete(1))
-console.log(set.size)
-// console.log(set.clear())
+// ////////Set
+// const set = new Set([1, 2, 3, 3, 3, 4, 5, 5, 6])
+// console.log(set)
+// set.add(10).add(20).add(30).add(20)
+// console.log(set)
+// console.log(set.has(30))
 // console.log(set.size)
+// console.log(set.delete(1))
+// console.log(set.size)
+// // console.log(set.clear())
+// // console.log(set.size)
 
-console.log(set.values())
-console.log(set.keys())
-console.log(set.entries())
+// console.log(set.values())
+// console.log(set.keys())
+// console.log(set.entries())
 
-for (let k of set) {
-    console.log(k)
-}
-
-
-function uniqValues(array) {
-    return [...new Set(array)]
-}
-console.log(uniqValues([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
-
-function uniqValues1(array) {
-    return Array.from(new Set(array))
-}
-console.log(uniqValues1([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
+// for (let k of set) {
+//     console.log(k)
+// }
 
 
-////////////WeakMap
-let ob = {name: 'weakmap'}
-// const a  = [ob]
+// function uniqValues(array) {
+//     return [...new Set(array)]
+// }
+// console.log(uniqValues([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
+
+// function uniqValues1(array) {
+//     return Array.from(new Set(array))
+// }
+// console.log(uniqValues1([1, 1, 2, 2, 4, 4, 4, 4, 5, 6, 6, 6]))
+
+
+// ////////////WeakMap
+// let ob = {name: 'weakmap'}
+// // const a  = [ob]
+// // ob = null
+// // console.log(ob)
+// // console.log(a[0])
+
+// const q = new WeakMap([
+//     [ob, 'ob data']
+// ])
+// // get set delete has
 // ob = null
-// console.log(ob)
-// console.log(a[0])
+// console.log(q.has(ob))
+// console.log(q.get(ob))
+// console.log(q)
 
-const q = new WeakMap([
-    [ob, 'ob data']
-])
-// get set delete has
-ob = null
-console.log(q.has(ob))
-console.log(q.get(ob))
-console.log(q)
+// /////////
+// const cache = new WeakMap()
+// function cacheUser(us) {
+//     if (!cache.has(us)) {
+//         cache.set(us, Date.now())
+//     }
+//     return cache.get(us)
+// }
+// let lena = {name: 'Elena'}
+// let lesha = {name: 'Lesha'}
+// cacheUser(lena)
+// cacheUser(lesha)
 
-/////////
-const cache = new WeakMap()
-function cacheUser(us) {
-    if (!cache.has(us)) {
-        cache.set(us, Date.now())
+// lena = null
+
+// console.log(cache.has(lena))
+// console.log(cache.has(lesha))
+
+
+// ////////////WeakSet
+// const users1 = [
+//     {name: 'Daniil'},
+//     {name: 'Misha'},
+//     {name: 'Alex'}
+// ]
+
+// const visit = new WeakSet()
+// visit.add(users1[0]).add(users1[1])
+
+// users1.splice(1, 1) //Удаление второго пользователя из users1
+
+// console.log(visit.has(users1[0]))
+// console.log(visit.has(users1[1]))
+
+
+//////////////14 lesson
+///////XMLHttpRequest
+// const requestURL = 'https://jsonplaceholder.typicode.com/users'
+
+
+// function sendRequest(method, url, body = null) {
+//     return new  Promise((resolve, reject) => {
+// const xhr = new XMLHttpRequest()
+//     xhr.open(method, url)
+
+//     xhr.responseType = 'json'
+//     xhr.setRequestHeader('Content-type', 'application/json')
+
+//     xhr.onload = () => {
+//         if (xhr.status >= 400) {
+//             reject(xhr.response)
+//         } else {
+//             resolve (xhr.response)
+//         }
+//     }
+
+//     xhr.onerror = () => {
+//         reject(xhr.response)
+//     }
+
+//     xhr.send(JSON.stringify(body))
+//     })
+// }
+
+// // sendRequest('GET', requestURL)
+// // .then(data => console.log(data))
+// // .catch(err => console.log(err))
+
+// const body = {
+//     name: 'Eagle',
+//     age: 20
+// }
+
+// sendRequest('POST', requestURL, body)
+// .then(data => console.log(data))
+// .catch(err => console.log(err))
+
+
+////Fetch
+
+const requestURL = 'https://jsonplaceholder.typicode.com/users'
+
+
+function sendRequest(method, url, body = null) {
+    const headers = {
+        'Content-Type': 'application/json'
     }
-    return cache.get(us)
+    return fetch(url, {
+        method: method,
+        body: JSON.stringify(body),
+        headers: headers
+    }).then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+        return response.json().then(error => {
+            const e = new Error('Что-то пошло не так')
+            e.data = error
+            throw e
+        })
+    })
 }
-let lena = {name: 'Elena'}
-let lesha = {name: 'Lesha'}
-cacheUser(lena)
-cacheUser(lesha)
 
-lena = null
+// sendRequest('GET', requestURL)
+// .then(data => console.log(data))
+// .catch(err => console.log(err))
 
-console.log(cache.has(lena))
-console.log(cache.has(lesha))
+const body = {
+    name: 'Eagle',
+    age: 20
+}
 
-
-////////////WeakSet
-const users1 = [
-    {name: 'Daniil'},
-    {name: 'Misha'},
-    {name: 'Alex'}
-]
-
-const visit = new WeakSet()
-visit.add(users1[0]).add(users1[1])
-
-users1.splice(1, 1) //Удаление второго пользователя из users1
-
-console.log(visit.has(users1[0]))
-console.log(visit.has(users1[1]))
+sendRequest('POST', requestURL, body)
+.then(data => console.log(data))
+.catch(err => console.log(err))
