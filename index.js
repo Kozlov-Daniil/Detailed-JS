@@ -885,38 +885,109 @@
 
 ////Fetch
 
-const requestURL = 'https://jsonplaceholder.typicode.com/users'
+// const requestURL = 'https://jsonplaceholder.typicode.com/users'
 
 
-function sendRequest(method, url, body = null) {
-    const headers = {
-        'Content-Type': 'application/json'
-    }
-    return fetch(url, {
-        method: method,
-        body: JSON.stringify(body),
-        headers: headers
-    }).then(response => {
-        if (response.ok) {
-            return response.json()
-        }
-        return response.json().then(error => {
-            const e = new Error('Что-то пошло не так')
-            e.data = error
-            throw e
-        })
-    })
-}
+// function sendRequest(method, url, body = null) {
+//     const headers = {
+//         'Content-Type': 'application/json'
+//     }
+//     return fetch(url, {
+//         method: method,
+//         body: JSON.stringify(body),
+//         headers: headers
+//     }).then(response => {
+//         if (response.ok) {
+//             return response.json()
+//         }
+//         return response.json().then(error => {
+//             const e = new Error('Что-то пошло не так')
+//             e.data = error
+//             throw e
+//         })
+//     })
+// }
 
-// sendRequest('GET', requestURL)
+// // sendRequest('GET', requestURL)
+// // .then(data => console.log(data))
+// // .catch(err => console.log(err))
+
+// const body = {
+//     name: 'Eagle',
+//     age: 20
+// }
+
+// sendRequest('POST', requestURL, body)
 // .then(data => console.log(data))
 // .catch(err => console.log(err))
 
-const body = {
-    name: 'Eagle',
-    age: 20
+
+//////////15 lesson
+const citiesRussia = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск']
+const citiesEurope = ['Берлин', 'Прага', 'Париж']
+
+const citiesRussiaWithPopulation ={
+    Moscow: 20,
+    SaintPetersburg: 8,
+    Kazan: 5,
+    Novosibirsk: 3
+}
+const citiesEuropeWithPopulation ={
+    Moscow: 26,
+    Berlin: 10,
+    Praha: 3,
+    Paris: 2
 }
 
-sendRequest('POST', requestURL, body)
-.then(data => console.log(data))
-.catch(err => console.log(err))
+//Spread 
+console.log(...citiesRussia) ///... Переводит из массива в набор строк
+console.log(...citiesEurope)
+
+// const allCities = [...citiesRussia, 'Вашингтон', ...citiesEurope]
+const allCities = citiesEurope.concat(citiesRussia)
+console.log(allCities)
+
+
+console.log({...citiesRussiaWithPopulation})
+console.log({...citiesRussiaWithPopulation, ...citiesEuropeWithPopulation})
+console.log({...citiesEuropeWithPopulation, ...citiesRussiaWithPopulation})
+
+//Practice
+const numbers = [5, 37, 42, 17]
+console.log(Math.max(5, 37, 42, 17))
+console.log(Math.max(numbers)) //NaN
+console.log(Math.max(...numbers))
+console.log(Math.max.apply(null, numbers))
+
+const divs = document.querySelectorAll('div')
+const nodes = [...divs]
+console.log(divs)
+console.log(divs, Array.isArray(divs))
+console.log(nodes)
+console.log(nodes, Array.isArray(nodes))
+
+//Rest
+function sum(a, b, ...rest) {
+    console.log(rest)
+    return a + b + rest.reduce((a, i) => a + i, 0) 
+}
+
+const numbers1 = [1, 2, 3, 4, 5]
+console.log(sum(...numbers1))  //Spread
+
+// const a = numbers1[0]
+// const b = numbers1[1]
+
+const [a, b, ...other] = numbers1
+
+console.log(a, b, other)
+
+const person = {
+    name: 'Eagle',
+    age: 20,
+    city: 'Moscow',
+    country: 'Russia'
+}
+
+const {name, age, ...address} = person
+console.log(name, age, address)
