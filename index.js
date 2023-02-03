@@ -923,71 +923,118 @@
 
 
 //////////15 lesson
-const citiesRussia = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск']
-const citiesEurope = ['Берлин', 'Прага', 'Париж']
+// const citiesRussia = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск']
+// const citiesEurope = ['Берлин', 'Прага', 'Париж']
 
-const citiesRussiaWithPopulation ={
-    Moscow: 20,
-    SaintPetersburg: 8,
-    Kazan: 5,
-    Novosibirsk: 3
+// const citiesRussiaWithPopulation ={
+//     Moscow: 20,
+//     SaintPetersburg: 8,
+//     Kazan: 5,
+//     Novosibirsk: 3
+// }
+// const citiesEuropeWithPopulation ={
+//     Moscow: 26,
+//     Berlin: 10,
+//     Praha: 3,
+//     Paris: 2
+// }
+
+// //Spread 
+// console.log(...citiesRussia) ///... Переводит из массива в набор строк
+// console.log(...citiesEurope)
+
+// // const allCities = [...citiesRussia, 'Вашингтон', ...citiesEurope]
+// const allCities = citiesEurope.concat(citiesRussia)
+// console.log(allCities)
+
+
+// console.log({...citiesRussiaWithPopulation})
+// console.log({...citiesRussiaWithPopulation, ...citiesEuropeWithPopulation})
+// console.log({...citiesEuropeWithPopulation, ...citiesRussiaWithPopulation})
+
+// //Practice
+// const numbers = [5, 37, 42, 17]
+// console.log(Math.max(5, 37, 42, 17))
+// console.log(Math.max(numbers)) //NaN
+// console.log(Math.max(...numbers))
+// console.log(Math.max.apply(null, numbers))
+
+// const divs = document.querySelectorAll('div')
+// const nodes = [...divs]
+// console.log(divs)
+// console.log(divs, Array.isArray(divs))
+// console.log(nodes)
+// console.log(nodes, Array.isArray(nodes))
+
+// //Rest
+// function sum(a, b, ...rest) {
+//     console.log(rest)
+//     return a + b + rest.reduce((a, i) => a + i, 0) 
+// }
+
+// const numbers1 = [1, 2, 3, 4, 5]
+// console.log(sum(...numbers1))  //Spread
+
+// // const a = numbers1[0]
+// // const b = numbers1[1]
+
+// const [a, b, ...other] = numbers1
+
+// console.log(a, b, other)
+
+// const person = {
+//     name: 'Eagle',
+//     age: 20,
+//     city: 'Moscow',
+//     country: 'Russia'
+// }
+
+// const {name, age, ...address} = person
+// console.log(name, age, address)
+
+
+/////////////16 lesson
+function calcValues(a, b) {
+    return [
+        a + b,
+        a - b,
+        a * b,
+        a / b
+    ]
 }
-const citiesEuropeWithPopulation ={
-    Moscow: 26,
-    Berlin: 10,
-    Praha: 3,
-    Paris: 2
-}
+// const result = calcValues(42, 10)
+const [sum, sub = 'Вычитания нет', mult, ...other] = calcValues(42, 10)  // sub = 'Вычитания нет' - значение по умолчанию, срабатывает только когда вместо решения выдаётся undefined
+// const sum = result[0]
+// const sub = result[1]
 
-//Spread 
-console.log(...citiesRussia) ///... Переводит из массива в набор строк
-console.log(...citiesEurope)
-
-// const allCities = [...citiesRussia, 'Вашингтон', ...citiesEurope]
-const allCities = citiesEurope.concat(citiesRussia)
-console.log(allCities)
+// const [sum, sub] = result 
 
 
-console.log({...citiesRussiaWithPopulation})
-console.log({...citiesRussiaWithPopulation, ...citiesEuropeWithPopulation})
-console.log({...citiesEuropeWithPopulation, ...citiesRussiaWithPopulation})
 
-//Practice
-const numbers = [5, 37, 42, 17]
-console.log(Math.max(5, 37, 42, 17))
-console.log(Math.max(numbers)) //NaN
-console.log(Math.max(...numbers))
-console.log(Math.max.apply(null, numbers))
+console.log(sum, mult, other, sub)
 
-const divs = document.querySelectorAll('div')
-const nodes = [...divs]
-console.log(divs)
-console.log(divs, Array.isArray(divs))
-console.log(nodes)
-console.log(nodes, Array.isArray(nodes))
-
-//Rest
-function sum(a, b, ...rest) {
-    console.log(rest)
-    return a + b + rest.reduce((a, i) => a + i, 0) 
-}
-
-const numbers1 = [1, 2, 3, 4, 5]
-console.log(sum(...numbers1))  //Spread
-
-// const a = numbers1[0]
-// const b = numbers1[1]
-
-const [a, b, ...other] = numbers1
-
-console.log(a, b, other)
-
+//Object
 const person = {
     name: 'Eagle',
     age: 20,
-    city: 'Moscow',
-    country: 'Russia'
+    address: {
+        country: 'Russia',
+        city: 'Moscow'
+    }
 }
 
-const {name, age, ...address} = person
-console.log(name, age, address)
+//const name = person.name
+// const {name: firstName = 'Без имени', age, car = 'Машины нет', address: {city: homeTown, country}} = person
+const {name, ...info} = person
+// console.log(firstName, age, car, homeTown, country)
+console.log(name, info)
+
+// function logPerson(per) {
+//     console.log(per.name + ' ' + per.age)
+// }
+
+function logPerson({name, age}) {
+    console.log(name + ' ' + age)
+}
+
+logPerson(person)
