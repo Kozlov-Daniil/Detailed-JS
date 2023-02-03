@@ -994,47 +994,74 @@
 
 
 /////////////16 lesson
-function calcValues(a, b) {
-    return [
-        a + b,
-        a - b,
-        a * b,
-        a / b
-    ]
-}
-// const result = calcValues(42, 10)
-const [sum, sub = 'Вычитания нет', mult, ...other] = calcValues(42, 10)  // sub = 'Вычитания нет' - значение по умолчанию, срабатывает только когда вместо решения выдаётся undefined
-// const sum = result[0]
-// const sub = result[1]
+// function calcValues(a, b) {
+//     return [
+//         a + b,
+//         a - b,
+//         a * b,
+//         a / b
+//     ]
+// }
+// // const result = calcValues(42, 10)
+// const [sum, sub = 'Вычитания нет', mult, ...other] = calcValues(42, 10)  // sub = 'Вычитания нет' - значение по умолчанию, срабатывает только когда вместо решения выдаётся undefined
+// // const sum = result[0]
+// // const sub = result[1]
 
-// const [sum, sub] = result 
+// // const [sum, sub] = result 
 
 
 
-console.log(sum, mult, other, sub)
+// console.log(sum, mult, other, sub)
 
-//Object
-const person = {
-    name: 'Eagle',
-    age: 20,
-    address: {
-        country: 'Russia',
-        city: 'Moscow'
-    }
-}
-
-//const name = person.name
-// const {name: firstName = 'Без имени', age, car = 'Машины нет', address: {city: homeTown, country}} = person
-const {name, ...info} = person
-// console.log(firstName, age, car, homeTown, country)
-console.log(name, info)
-
-// function logPerson(per) {
-//     console.log(per.name + ' ' + per.age)
+// //Object
+// const person = {
+//     name: 'Eagle',
+//     age: 20,
+//     address: {
+//         country: 'Russia',
+//         city: 'Moscow'
+//     }
 // }
 
-function logPerson({name, age}) {
-    console.log(name + ' ' + age)
+// //const name = person.name
+// // const {name: firstName = 'Без имени', age, car = 'Машины нет', address: {city: homeTown, country}} = person
+// const {name, ...info} = person
+// // console.log(firstName, age, car, homeTown, country)
+// console.log(name, info)
+
+// // function logPerson(per) {
+// //     console.log(per.name + ' ' + per.age)
+// // }
+
+// function logPerson({name, age}) {
+//     console.log(name + ' ' + age)
+// }
+
+// logPerson(person)
+
+
+//////////17 lesson LocalStorage
+//LocalStorage работает со строками
+const myNumber = 42
+localStorage.removeItem('number')
+console.log(localStorage.getItem('number'))
+localStorage.setItem('number', myNumber.toString()) // Запись, сначала пишется ключ, а потом то - что нужно записать
+console.log(localStorage.getItem('number'))
+// localStorage.clear()
+
+const object = {
+    name: 'Eagle',
+    age: 20
 }
 
-logPerson(person)
+localStorage.setItem('person', JSON.stringify(object))
+const raw = localStorage.getItem('person') // Получая данные из LocalStorage мы не получаем доступ к отдельным ключам
+const person = JSON.parse(raw)
+person.name = 'Danya'
+console.log(person)
+//////////
+window.addEventListener('storage', event => {
+ console.log(event)
+})
+
+// window.onstorage = () => {}
